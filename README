@@ -1,0 +1,4 @@
+A buffering version of the Python SMTPHandler.  This buffers up messages until the size of the buffered messages reaches a specified capacity.  It then sends everything that was buffered up until that point in one email message.  Capacity is specified on construction of the handler.  Uses whatever authentication is supported by the standard SMTPHandler.
+
+TLS SMTP authentication mail servers such as smtp.gmail.com work.  Tested with Python 2.7.  
+
