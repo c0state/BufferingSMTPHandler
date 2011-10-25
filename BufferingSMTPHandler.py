@@ -31,6 +31,11 @@ class BufferingSMTPHandler(logging.handlers.SMTPHandler):
             self.handleError(record)
  
     def flush(self):
+        # buffer on termination may be empty if capacity is an exact multiple of 
+        # lines that were logged--thus we need to check for empty buffer
+        if not self.buffer:
+            return
+
         try:
             import smtplib
             from email.utils import formatdate
